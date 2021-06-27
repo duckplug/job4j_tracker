@@ -8,7 +8,7 @@ public class Error {
     public  Error() {
     }
 
-    public  Err (boolean active, int status, String message) {
+    public  Error(boolean active, int status, String message) {
         this.active = active;
         this.status = status;
         this.message = message;
@@ -16,7 +16,7 @@ public class Error {
 
     public void printInfo() {
 
-        System.out.println("Пользователь в сети: "+ active);
+        System.out.println("Пользователь в сети: " + active);
         System.out.println("Статус сообщения: " + status);
         System.out.println("Сообщение: " + message);
 
@@ -24,7 +24,7 @@ public class Error {
 
      public static void main(String[] args) {
         Error error = new Error();
-        Error err = new Err (true, 1, "123");
+        Error err = new Error(true, 1, "New message");
         error.printInfo();
         err.printInfo();
      }
