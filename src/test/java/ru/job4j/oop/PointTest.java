@@ -22,7 +22,6 @@ public class PointTest {
         double dist = first.distance(second);
         double expected = 1.414;
         Assert.assertEquals(expected, dist, 0.001);
-
     }
 }
 
