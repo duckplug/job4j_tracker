@@ -12,10 +12,8 @@ public class PointTest {
         double dist = first.distance(second);
         double expected = 0.0;
         Assert.assertEquals(expected, dist, 0.001);
-
     }
 
-    @SuppressWarnings("checkstyle:WhitespaceAfter")
     @Test
     public void when000to111then0() {
         Point first = new Point(0, 0, 0);
