@@ -20,10 +20,9 @@ public class Item {
         this.name = name;
     }
 
-    public String getCrated() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        String createdFormat = created.format(formatter);
-       return createdFormat;
+    public LocalDateTime getCrated() {
+
+       return created;
     }
 
     public int getId() {
