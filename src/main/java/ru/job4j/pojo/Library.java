@@ -14,10 +14,29 @@ public class Library {
         books[3] = cleaneCode;
 
         for (int i = 0; i < books.length; i++) {
-           Books booksAr = Books[i];
-            
+           Book booksAr = books[i];
+            System.out.println(booksAr.getName() + " - " + booksAr.getPages());
         }
-
-
+        System.out.println();
+        System.out.println("Switch") ;
+        System.out.println();
+        Book sw = new Book("0",0);
+        sw = books[3];
+        books[3] = books[0];
+        books[0] = sw;
+        for (int i = 0; i < books.length; i++) {
+            Book booksAr = books[i];
+            System.out.println(booksAr.getName() + " - " + booksAr.getPages());
+        }
+        System.out.println();
+        System.out.println("Search book") ;
+        System.out.println();
+        for (int i = 0; i < books.length; i++) {
+            Book booksAr = books[i];
+            if (booksAr.getName().equals("Clean Code")) {
+                System.out.println(booksAr.getName() + " - " + booksAr.getPages());
+            }
+        }
     }
 }
+
