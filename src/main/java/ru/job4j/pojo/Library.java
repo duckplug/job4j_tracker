@@ -13,8 +13,7 @@ public class Library {
         books[2] = three;
         books[3] = cleaneCode;
 
-        for (int i = 0; i < books.length; i++) {
-           Book booksAr = books[i];
+        for (Book booksAr : books) {
             System.out.println(booksAr.getName() + " - " + booksAr.getPages());
         }
         System.out.println();
@@ -24,16 +23,15 @@ public class Library {
         sw = books[3];
         books[3] = books[0];
         books[0] = sw;
-        for (int i = 0; i < books.length; i++) {
-            Book booksAr = books[i];
+        for (Book booksAr : books) {
             System.out.println(booksAr.getName() + " - " + booksAr.getPages());
         }
         System.out.println();
         System.out.println("Search book") ;
         System.out.println();
-        for (int i = 0; i < books.length; i++) {
-            Book booksAr = books[i];
-            if (booksAr.getName().equals("Clean Code")) {
+        for (Book booksAr : books) {
+
+            if ("Clean Code".equals(booksAr.getName())) {
                 System.out.println(booksAr.getName() + " - " + booksAr.getPages());
             }
         }
