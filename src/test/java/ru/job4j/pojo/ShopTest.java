@@ -2,6 +2,7 @@ package ru.job4j.pojo;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static ru.job4j.pojo.Shop.indexOfNull;
 
 import org.junit.Test;
 
