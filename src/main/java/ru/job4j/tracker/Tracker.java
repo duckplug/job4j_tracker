@@ -7,6 +7,17 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
+    @Override
+    public boolean replace(int id, Item item) {
+        int index = indexOf(id);
+        boolean rsl = index != -1;
+        if (rsl) {
+            item.setId(id);
+            items[index] = item;
+        }
+        return rsl;
+    }
+
     public Item add(Item item) {
         item.setId(ids++);
         items[size++] = item;
@@ -47,16 +58,6 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean replace(int id, Item item) {
-        int index = indexOf(id);
-        if (index != -1) {
-            item.setId(id);
-            items[index] = item;
-            return true;
-        }
-            return false;
-    }
-
     public boolean delete(int id) {
         int index = indexOf(id);
         if (index != -1) {
@@ -69,7 +70,7 @@ public class Tracker {
             return true;
         }
         return false;
-            }
+    }
 }
 
 

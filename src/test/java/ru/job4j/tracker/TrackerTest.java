@@ -56,7 +56,7 @@ public class TrackerTest {
     }
 
     @Test
-    public void whenReplace() {
+       public void whenReplace() {
         Tracker tracker = new Tracker();
         Item bug = new Item();
         bug.setName("Bug");
