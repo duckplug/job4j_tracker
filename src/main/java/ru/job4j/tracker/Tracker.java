@@ -7,7 +7,7 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
-    @Override
+    //@Override
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
@@ -61,10 +61,7 @@ public class Tracker {
     public boolean delete(int id) {
         int index = indexOf(id);
         if (index != -1) {
-            items[index] = null;
-            int start = index + 1;
-            int destLength = size - index - 1;
-            System.arraycopy(items, start, items, index, destLength);
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
             return true;
