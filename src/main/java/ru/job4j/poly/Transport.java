@@ -1,7 +1,9 @@
 package ru.job4j.poly;
 
 public interface Transport {
-    String void drive();
-    int void pessenger (int number);
-    int oil (int volume);
+    void drive();
+
+    int void  pessenger(int number, int cost);
+
+    int oil(int volume, int price);
 }
