@@ -30,7 +30,8 @@ public class StartUI {
                     new ReplaceAction(),
                     new DeleteAction(),
                     new FindItemByIdAction(),
-                    new FindItemByNameAction()
+                    new FindItemByNameAction(),
+                    new Exit()
             };
             new StartUI().init(input, tracker, actions);
     }
