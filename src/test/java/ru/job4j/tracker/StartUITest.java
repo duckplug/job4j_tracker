@@ -18,17 +18,6 @@ public class StartUITest {
     }
 
     @Test
-    public void when() {
-        String[] answers = {"New Item"};
-        Input input = new StubInput(answers);
-        Tracker tracker = new Tracker();
-        StartUI.createItem(input, tracker);
-        Item created = tracker.findAll()[0];
-        Item expected = new Item("New Item");
-        assertThat(created.getName(), is(expected.getName()));
-    }
-
-    @Test
     public void whenReplaceItem() {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
@@ -48,8 +37,7 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {
-                String.valueOf(item.getId()),
-                "deleted Item"
+                String.valueOf(item.getId())
         };
         StartUI.deleteItem(new StubInput(answers), tracker);
         tracker.delete(item.getId());
