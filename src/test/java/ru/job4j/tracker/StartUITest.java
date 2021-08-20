@@ -7,22 +7,6 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
-    @Test
-    public void whenExit() {
-        Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[]{"0"}
-        );
-        Tracker tracker = new Tracker();
-        UserAction[] actions = {
-                new Exit()
-        };
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
-        ));
-    }
 
     @Test
     public void whenCreateItem() {
@@ -70,5 +54,38 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }
+
+    @Test
+    public void whenExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                new Exit()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Exit" + System.lineSeparator()
+        ));
+    }
+
+    @Test
+    public void whenCreateOut() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[]{"0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {
+                 new CreateAction(out),
+        };
+        new CreateAction(in,tracker)
+        assertThat(out.toString(), is(
+                ""
+        ));
     }
 }
