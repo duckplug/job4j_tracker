@@ -2,12 +2,18 @@ package ru.job4j.strategy;
 
 import ru.job4j.tracker.Input;
 import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Output;
 import ru.job4j.tracker.Tracker;
 
 import static java.lang.System.out;
 
 
 public class ReplaceAction implements UserAction {
+    private final Output out;
+
+    public  ReplaceAction (Output out) {
+        this.out = out;
+    }
     @Override
     public String name() {
         return "Replace Item";
