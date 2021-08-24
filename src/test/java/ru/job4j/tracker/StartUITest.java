@@ -11,6 +11,7 @@ public class StartUITest {
     @Test
     public void whenCreateItem() {
         Output out = new StubOutput();
+
         Input in = new StubInput(
                 new String[]{"0", "Item name", "1"}
         );
@@ -83,7 +84,7 @@ public class StartUITest {
         UserAction[] actions = {
                  new CreateAction(out),
         };
-        new CreateAction(in,tracker)
+        new CreateAction(out);
         assertThat(out.toString(), is(
                 ""
         ));
