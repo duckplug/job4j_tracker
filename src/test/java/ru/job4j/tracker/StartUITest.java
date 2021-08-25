@@ -18,7 +18,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(out),
-                new Exit
+                new Exit()
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
@@ -73,20 +73,30 @@ public class StartUITest {
                         "0. Exit" + System.lineSeparator()
         ));
     }
-
     @Test
-    public void whenCreateOut() {
+    public void whenFindAllAction() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[]{"0"}
-        );
         Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Find Me"));
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(item.getId()), "1"}
+        );
+
+
         UserAction[] actions = {
-                 new CreateAction(out),
+                new FindAllAction(out),
+                new Exit()
         };
-        new CreateAction(out);
+        new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                ""
+                "Menu." + System.lineSeparator() +
+                        "0. Find all Item" + System.lineSeparator()+
+                        "1. Exit" + System.lineSeparator()+
+                        "=== Show all items ====" + System.lineSeparator()+
+                        "Item{id=1, name='Find Me', created=" + item.getCreated() + System.lineSeparator()+
+                        "Menu." +System.lineSeparator()+
+                        "0. Find all Item" + System.lineSeparator()+
+                        "1. Exit"+ System.lineSeparator()
         ));
     }
 }
