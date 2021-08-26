@@ -90,12 +90,66 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
-                        "0. Find all Item" + System.lineSeparator()+
+                        "0. Find all Item" + System.lineSeparator() +
                         "1. Exit" + System.lineSeparator()+
-                        "=== Show all items ====" + System.lineSeparator()+
-                        "Item{id=1, name='Find Me', created=" + item.getCreated() + System.lineSeparator()+
-                        "Menu." +System.lineSeparator()+
-                        "0. Find all Item" + System.lineSeparator()+
+                        "=== Show all items ====" + System.lineSeparator() +
+                        item + System.lineSeparator() +
+                        "Menu." +System.lineSeparator() +
+                        "0. Find all Item" + System.lineSeparator() +
+                        "1. Exit"+ System.lineSeparator()
+        ));
+    }
+
+    @Test
+    public void whenFindByNameAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Find by name"));
+        Input in = new StubInput(
+                new String[]{"0", "Find by name", "1"}
+        );
+
+
+        UserAction[] actions = {
+                new FindItemByNameAction(out),
+                new Exit()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Find Item by name" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator()+
+                        "=== Find items by name ====" + System.lineSeparator() +
+                        item + System.lineSeparator() +
+                        "Menu." +System.lineSeparator() +
+                        "0. Find Item by name" + System.lineSeparator() +
+                        "1. Exit"+ System.lineSeparator()
+        ));
+    }
+
+    @Test
+    public void whenFindByIDAction() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item = tracker.add(new Item("Find by id"));
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(item.getId()), "1"}
+        );
+
+
+        UserAction[] actions = {
+                new FindItemByIdAction(out),
+                new Exit()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. Find Item by ID" + System.lineSeparator() +
+                        "1. Exit" + System.lineSeparator()+
+                        "=== Find item by id ====" + System.lineSeparator() +
+                        item + System.lineSeparator() +
+                        "Menu." +System.lineSeparator() +
+                        "0. Find Item by ID" + System.lineSeparator() +
                         "1. Exit"+ System.lineSeparator()
         ));
     }
