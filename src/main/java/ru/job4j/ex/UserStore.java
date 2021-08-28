@@ -16,7 +16,6 @@ public class UserStore {
     }
 
 
-
     public static boolean validate(User user) throws UserInvalidException {
         if (user.isValid()) {
             throw new UserInvalidException("пользователь не прошел валидацию");
