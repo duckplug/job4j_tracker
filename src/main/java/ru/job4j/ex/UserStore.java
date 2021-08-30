@@ -1,47 +1,48 @@
 package ru.job4j.ex;
-
 public class UserStore {
+
     public static User findUser(User[] users, String login) throws UserNotFoundException {
-         boolean rsl = true;
+        User rsl = null;
         for (int i = 0; i < users.length; i++) {
             if (users[i].getUsername().equals(login)) {
-             rsl = false;
-             break;
+                rsl = users[i];
+                break;
             }
         }
-        if (rsl) {
+        if (rsl == null) {
             throw new UserNotFoundException("Пользователь не найден");
         }
-        return null;
+        return rsl;
     }
 
-
     public static boolean validate(User user) throws UserInvalidException {
-        if (user.isValid()) {
-            throw new UserInvalidException("пользователь не прошел валидацию");
+        boolean rsl = false;
+        if ((!user.isValid()) && (user.getUsername().length() < 3)) {
+            rsl = true;
+            return rsl;
         }
-        if (user.getUsername().length() < 3) {
-            throw new UserInvalidException("Дина имени должна быть больше 3 символов");
+        if (rsl == false) {
+            throw new UserInvalidException("Юзер не прошел валидацию");
         }
-        return false;
+        return rsl;
     }
 
     public static void main(String[] args) {
         User[] users = {
                 new User("Petr Arsentev", true)
         };
-        User user = findUser(users, "Petr Arsentev");
+
         try {
+            User user = findUser(users, "Petr Arsentev");
             if (validate(user)) {
                 System.out.println("This user has an access");
             }
-        } catch (UserNotFoundException a) {
+        } catch (UserInvalidException a) {
             a.printStackTrace();
-
-        } catch (UserInvalidException ae) {
-            ae.printStackTrace();
+        } catch (UserNotFoundException b) {
+            b.printStackTrace();
         }
-
-
     }
 }
+
+
