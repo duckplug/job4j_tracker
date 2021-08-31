@@ -73,6 +73,7 @@ public class StartUITest {
                         "0. Exit" + System.lineSeparator()
         ));
     }
+
     @Test
     public void whenFindAllAction() {
         Output out = new StubOutput();
@@ -91,12 +92,12 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0. Find all Item" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()+
+                        "1. Exit" + System.lineSeparator() +
                         "=== Show all items ====" + System.lineSeparator() +
                         item + System.lineSeparator() +
-                        "Menu." +System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
                         "0. Find all Item" + System.lineSeparator() +
-                        "1. Exit"+ System.lineSeparator()
+                        "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -118,12 +119,12 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0. Find Item by name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()+
+                        "1. Exit" + System.lineSeparator() +
                         "=== Find items by name ====" + System.lineSeparator() +
                         item + System.lineSeparator() +
-                        "Menu." +System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
                         "0. Find Item by name" + System.lineSeparator() +
-                        "1. Exit"+ System.lineSeparator()
+                        "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -145,12 +146,34 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                         "0. Find Item by ID" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()+
+                        "1. Exit" + System.lineSeparator() +
                         "=== Find item by id ====" + System.lineSeparator() +
                         item + System.lineSeparator() +
-                        "Menu." +System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
                         "0. Find Item by ID" + System.lineSeparator() +
-                        "1. Exit"+ System.lineSeparator()
+                        "1. Exit" + System.lineSeparator()
         ));
+    }
+
+@Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"2","0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new Exit()
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                        "Menu." + ln
+                                + "0. Exit" + ln
+                                + "Wrong input, you can select: 0 .. 0" + ln
+                                + "Menu." + ln
+                                + "0. Exit" + ln
+                )
+        );
     }
 }
