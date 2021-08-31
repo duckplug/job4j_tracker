@@ -16,11 +16,7 @@ public class UserStore {
     }
 
     public static boolean validate(User user) throws UserInvalidException {
-        boolean rsl = false;
-        if ((!user.isValid()) && (user.getUsername().length() < 3)) {
-            rsl = true;
-            return rsl;
-        }
+        boolean rsl = user.isValid() && user.getUsername().length() > 3;
         if (rsl == false) {
             throw new UserInvalidException("Юзер не прошел валидацию");
         }
