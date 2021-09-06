@@ -31,7 +31,7 @@ public class ValidateInput implements Input {
         boolean invalid = true;
         int value = -1;
         do {
-            String rsl = in.askStr(question);
+            String rsl = in.askStr(question);// использую in, а не input
             if (!isNumber(rsl)) {
                 System.out.println("Please enter validate data again.");
                 continue;
