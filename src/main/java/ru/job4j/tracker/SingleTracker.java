@@ -3,12 +3,11 @@ import java.util.Arrays;
 
 public final class SingleTracker {
 
-    private Tracker tracker = new Tracker();
     private static SingleTracker checkCopy = null;
-    private final Item[] items = new Item[100];
-    private int size = 0;
+    private Tracker tracker = new Tracker();
 
     private SingleTracker() {
+
     }
 
     public static SingleTracker getCheckCopy() {
@@ -23,11 +22,11 @@ public final class SingleTracker {
     }
 
     public Item findById(int id) {
-        return null;
+        return tracker.findById(id);
     }
 
     public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+        return tracker.findAll();
     }
 
     public Item[] findByName(String key) {
