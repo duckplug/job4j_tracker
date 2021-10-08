@@ -8,6 +8,7 @@ public class ConvertList2Array {
         System.out.println(groups);
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
+
         for (Integer num : list) {
             array[row][cell] = num;
             cell += 1;
