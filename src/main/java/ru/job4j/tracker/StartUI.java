@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import ru.job4j.strategy.*;
 
+import java.util.ArrayList;
+
 public class StartUI {
     private final Output out;
 
@@ -9,7 +11,7 @@ public class StartUI {
         this.out = out;
     }
 
-            public void init(Input input, Tracker tracker, UserAction[] actions) {
+            public void init(Input input, Tracker tracker, UserAction actions) {
             boolean run = true;
             while (run) {
                 this.showMenu(actions);
