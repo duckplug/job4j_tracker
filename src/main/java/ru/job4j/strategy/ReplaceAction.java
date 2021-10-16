@@ -7,13 +7,13 @@ import ru.job4j.tracker.Tracker;
 
 import static java.lang.System.out;
 
-
 public class ReplaceAction implements UserAction {
     private final Output out;
 
-    public  ReplaceAction (Output out) {
+    public  ReplaceAction(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "Replace Item";
