@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Item implements Comparable<Item> {
+public class Item  {
 
     private int id;
 
@@ -59,11 +59,6 @@ public class Item implements Comparable<Item> {
     }
 
     @Override
-    public int compareTo(Item another) {
-        return Integer.compare(id, another.id);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -76,6 +71,3 @@ public class Item implements Comparable<Item> {
         return Objects.hash(id, name);
     }
 }
-
-
-
