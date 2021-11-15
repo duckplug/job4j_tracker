@@ -27,11 +27,9 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        Set<User> users = new TreeSet<>();
-        return ;
-        }
-    }
+        return getName().compareTo(o.getName()) == 0?   Integer.compare(age, getAge()) : getName().compareTo(o.getName());
 
+    }
 
     @Override
     public boolean equals(Object o) {
