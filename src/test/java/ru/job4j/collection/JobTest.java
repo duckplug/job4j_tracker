@@ -40,7 +40,7 @@ public class JobTest {
     @Test
     public void whenAcsByNameAndPriority() {
         Comparator<Job> compareNameHigh = new JobAcsByName().thenComparing(new JobAcsByPriority());
-        int rsl = compareNameHigh.compare(new Job ("Work B", 2), new Job ("Work A", 1));
+        int rsl = compareNameHigh.compare(new Job ("Work B", 2), new Job ("Work B", 1));
         assertThat(rsl,greaterThan(0));
     }
 
