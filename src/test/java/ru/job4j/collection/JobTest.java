@@ -47,7 +47,7 @@ public class JobTest {
     @Test
     public void whenDescByNameDescPriority() {
         Comparator<Job> compareNameHigh = new JobDescByName().thenComparing(new JobDescByPriority());
-        int rsl = compareNameHigh.compare(new Job ("Work B", 1), new Job ("Work B", 2));
+        int rsl = compareNameHigh.compare(new Job ("Work A", 1), new Job ("Work A", 2));
         assertThat(rsl,greaterThan(0));
     }
 }
