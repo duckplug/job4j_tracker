@@ -40,14 +40,14 @@ public class JobTest {
     @Test
     public void whenAcsByNameAndPriority() {
         Comparator<Job> compareNameHigh = new JobAcsByName().thenComparing(new JobAcsByPriority());
-        int rsl = compareNameHigh.compare(new Job ("Work B", 2), new Job ("Work B", 1));
+        int rsl = compareNameHigh.compare(new Job ("Work A", 2), new Job ("Work A", 1));
         assertThat(rsl,greaterThan(0));
     }
 
     @Test
     public void whenDescByNameDescPriority() {
         Comparator<Job> compareNameHigh = new JobDescByName().thenComparing(new JobDescByPriority());
-        int rsl = compareNameHigh.compare(new Job ("Work A", 1), new Job ("Work A", 2));
+        int rsl = compareNameHigh.compare(new Job ("Work C", 1), new Job ("Work C", 2));
         assertThat(rsl,greaterThan(0));
     }
 }
