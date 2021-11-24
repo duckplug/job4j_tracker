@@ -2,7 +2,16 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает аккаунт банковского пользователя через поля
+ * @author OOKOLELOV ANTON
+ */
+
 public class Account {
+    /**
+     * Поле requisite - служит для хранения данных реквизита банковского счета
+     * Поле balance -  служит для хранения текущего баланса на аккаунте
+     */
     private String requisite;
     private double balance;
 
