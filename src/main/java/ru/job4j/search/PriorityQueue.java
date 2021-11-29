@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * Класс описывает работу простейшей очереди по приоритету, которая работает
  * по принципу FIFO (first in - first out)
- * @author STAS KOROBEYNIKOV
+ * @author OKOLELOV ANTON
  * @version 1.0
  */
 
