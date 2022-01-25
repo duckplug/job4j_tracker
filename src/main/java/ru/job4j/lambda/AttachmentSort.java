@@ -17,6 +17,7 @@ public class AttachmentSort {
                 Attachment left = (Attachment) o1;
                 Attachment right = (Attachment) o2;
                 return left.getSize() - right.getSize();
+
             }
         };
 
