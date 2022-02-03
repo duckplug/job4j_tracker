@@ -36,6 +36,7 @@ public class PriorityQueue {
      * Метод позволяет получить первую задачу в очереди
      * @return возвращает задачу из головы очереди или null если очередь пуста
      */
+
     public Task take() {
         return tasks.poll();
     }
