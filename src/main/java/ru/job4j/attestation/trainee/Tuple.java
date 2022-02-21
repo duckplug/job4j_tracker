@@ -11,6 +11,10 @@ public class Tuple {
         this.score = score;
     }
 
+    public double getScore() {
+        return score;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
