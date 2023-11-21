@@ -4,7 +4,8 @@ public class Design extends Engineer {
     private String size;
     private String material;
 
-    public Design(String name, String surname, String education, int birthday, int rank, String size, String material) {
+    public Design(String name, String surname, String education, int birthday,
+                  int rank, String size, String material) {
         super(name, surname, education, birthday, rank);
 
         this.size = size;
