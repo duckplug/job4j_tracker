@@ -11,63 +11,63 @@ import static org.junit.Assert.assertThat;
 public class TrackerTest {
     @Test
     public void whenTestFindById() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item bug = new Item("Bug");
-        Item item = tracker.add(bug);
-        Item result = tracker.findById(item.getId());
+        Item item = memTracker.add(bug);
+        Item result = memTracker.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
     }
 
     @Test
     public void whenTestFindAll() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
-        tracker.add(first);
-        tracker.add(second);
-        List<Item> result = tracker.findAll();
+        memTracker.add(first);
+        memTracker.add(second);
+        List<Item> result = memTracker.findAll();
         assertThat(result.get(0).getName(), is(first.getName()));
     }
 
     @Test
     public void whenTestFindByNameCheckArrayLength() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
-        tracker.add(first);
-        tracker.add(second);
-        tracker.add(new Item("First"));
-        tracker.add(new Item("Second"));
-        tracker.add(new Item("First"));
-        List<Item> result = tracker.findByName(first.getName());
+        memTracker.add(first);
+        memTracker.add(second);
+        memTracker.add(new Item("First"));
+        memTracker.add(new Item("Second"));
+        memTracker.add(new Item("First"));
+        List<Item> result = memTracker.findByName(first.getName());
         assertThat(result.size(), is(3));
     }
 
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item first = new Item("First");
         Item second = new Item("Second");
-        tracker.add(first);
-        tracker.add(second);
-        tracker.add(new Item("First"));
-        tracker.add(new Item("Second"));
-        tracker.add(new Item("First"));
-        List<Item> result = tracker.findByName(second.getName());
+        memTracker.add(first);
+        memTracker.add(second);
+        memTracker.add(new Item("First"));
+        memTracker.add(new Item("Second"));
+        memTracker.add(new Item("First"));
+        List<Item> result = memTracker.findByName(second.getName());
         assertThat(result.get(1).getName(), is(second.getName()));
     }
 
     @Test
     public void whenReplace() {
-        Tracker tracker = new Tracker();
+        MemTracker memTracker = new MemTracker();
         Item bug = new Item();
         bug.setName("Bug");
-        tracker.add(bug);
+        memTracker.add(bug);
         int id = bug.getId();
         Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
-        tracker.replace(id, bugWithDesc);
-        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+        memTracker.replace(id, bugWithDesc);
+        assertThat(memTracker.findById(id).getName(), is("Bug with description"));
     }
 
    /* @Test

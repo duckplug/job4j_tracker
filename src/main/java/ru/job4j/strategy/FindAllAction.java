@@ -1,9 +1,7 @@
 package ru.job4j.strategy;
 
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.Output;
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.*;
+
 import java.util.List;
 
 public class FindAllAction implements UserAction {
@@ -19,9 +17,9 @@ public class FindAllAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store store) {
         out.println("=== Show all items ====");
-        List<Item> items = tracker.findAll();
+        List<Item> items = store.findAll();
         if (items.isEmpty()) {
             out.println("Хранилище еще не содержи заявок.");
         } else {
