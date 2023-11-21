@@ -3,29 +3,34 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracker {
+public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>(100);
     private int ids = 1;
 
+    @Override
+    public void close() throws Exception {
+
+    }
+
+    @Override
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
         return item;
     }
 
-    /**
-     * Пробный коммит
-     */
-
+    @Override
     public Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items.get(index) : null;
     }
 
+    @Override
     public List<Item> findAll() {
         return List.copyOf(items);
     }
 
+    @Override
     public List<Item>  findByName(String key) {
         List<Item> result = new ArrayList<>();
         for (Item item : items) {
@@ -36,23 +41,28 @@ public class Tracker {
         return result;
     }
 
+    @Override
     public boolean replace(int id, Item item) {
-        int index = indexOf(id);
-        boolean result = index != -1;
-        if (result) {
-            item.setId(id);
+        int index = indexOf(id); // получили индекс заявки в массиве по id
+        boolean result = index != -1; // проверили, что такая заявка существует
+        if (result) { // если да то...
+            item.setId(id); // устанавливаем новое id у заявки из аргументов
             items.set(index, item);
         }
         return result;
     }
 
-    public boolean delete(int id) {
+    /**
+     * В соответствии с методом интерфейса Store
+     * метод должен быть void
+     */
+    @Override
+    public void delete(int id) {
         int index = indexOf(id);
         boolean result = index != -1;
         if (result) {
             items.remove(index);
         }
-        return result;
     }
 
     private int indexOf(int id) {

@@ -13,7 +13,7 @@ public class Item  {
 
     private String name;
 
-    private LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now().withNano(0);
 
     public Item() {
     }
@@ -45,6 +45,10 @@ public class Item  {
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+    public void setCreated(LocalDateTime data) {
+        this.created = data;
     }
 
     @Override

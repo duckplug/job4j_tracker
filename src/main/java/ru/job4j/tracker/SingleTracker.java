@@ -4,7 +4,7 @@ import java.util.List;
 public final class SingleTracker {
 
     private static SingleTracker checkCopy = null;
-    private Tracker tracker = new Tracker();
+    private Store store = new SqlTracker();
 
     private SingleTracker() {
 
@@ -18,26 +18,26 @@ public final class SingleTracker {
     }
 
     public Item add(Item item) {
-        return tracker.add(item);
+        return store.add(item);
     }
 
     public Item findById(int id) {
-        return tracker.findById(id);
+        return store.findById(id);
     }
 
     public List<Item> findAll() {
-        return tracker.findAll();
+        return store.findAll();
     }
 
     public List<Item> findByName(String key) {
-        return tracker.findByName(key);
+        return store.findByName(key);
     }
 
     public boolean replace(int id, Item item) {
-        return tracker.replace(id, item);
-        }
+        return store.replace(id, item);
+    }
 
-    public boolean delete(int id) {
-        return tracker.delete(id);
+    public void delete(int id) {
+        store.delete(id);
     }
 }

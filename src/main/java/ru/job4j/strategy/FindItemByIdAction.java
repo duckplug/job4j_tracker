@@ -1,13 +1,6 @@
 package ru.job4j.strategy;
 
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.Output;
-import ru.job4j.tracker.Tracker;
-
-import java.util.List;
-
-import static java.lang.System.out;
+import ru.job4j.tracker.*;
 
 public class FindItemByIdAction implements UserAction {
     private final Output out;
@@ -22,10 +15,10 @@ public class FindItemByIdAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store store) {
         out.println("=== Find item by id ====");
         int id = input.askInt("Enter id: ");
-        Item item = tracker.findById(id);
+        Item item = store.findById(id);
         if (item != null) {
             out.println(item);
         } else {
