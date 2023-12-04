@@ -43,10 +43,10 @@ public class MemTracker implements Store {
 
     @Override
     public boolean replace(int id, Item item) {
-        int index = indexOf(id); // получили индекс заявки в массиве по id
-        boolean result = index != -1; // проверили, что такая заявка существует
-        if (result) { // если да то...
-            item.setId(id); // устанавливаем новое id у заявки из аргументов
+        int index = indexOf(id);
+        boolean result = index != -1;
+        if (result) {
+            item.setId(id);
             items.set(index, item);
         }
         return result;
