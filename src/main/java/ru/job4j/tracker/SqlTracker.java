@@ -112,11 +112,11 @@ public class SqlTracker implements Store {
             ps.setString(1, key);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                Item item = new Item();
-                item.setName(rs.getObject(2, String.class));
-                item.setId(rs.getInt(1));
-                item.setCreated(rs.getObject(3, Timestamp.class).toLocalDateTime());
-                itemList.add(item);
+                    Item item = new Item();
+                    item.setName(rs.getObject(2, String.class));
+                    item.setId(rs.getInt(1));
+                    item.setCreated(rs.getObject(3, Timestamp.class).toLocalDateTime());
+                    itemList.add(item);
                 }
             }
         } catch (Exception e) {
@@ -135,6 +135,8 @@ public class SqlTracker implements Store {
                     item.setName(rs.getObject(2, String.class));
                     item.setId(rs.getInt(1));
                     item.setCreated(rs.getObject(3, Timestamp.class).toLocalDateTime());
+                } else {
+                    item = null;
                 }
             }
         } catch (Exception e) {

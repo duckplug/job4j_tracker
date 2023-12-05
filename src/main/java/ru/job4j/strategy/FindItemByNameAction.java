@@ -21,7 +21,7 @@ public class FindItemByNameAction implements UserAction {
         out.println("=== Find items by name ====");
         String name = input.askStr("Enter name: ");
         List<Item> items = store.findByName(name);
-        if (items.size() > 0) {
+        if (items != null) {
             for (Item item : items) {
                 out.println(item);
             }
