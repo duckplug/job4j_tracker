@@ -1,6 +1,5 @@
 package ru.job4j.tracker.store;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,7 +24,8 @@ public class SqlTrackerTest {
 
     @BeforeAll
     public static void initConnection() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("db/liquibase_test.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader().
+                getResourceAsStream("db/liquibase_test.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -125,14 +125,17 @@ public class SqlTrackerTest {
     public void whenReplaceAndFind() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("Item");
+        Item item1 = new Item("Item1");
         Item replaceItem = new Item( "ReplaceItem");
-        List<Item> list = new ArrayList<>();
-        list.add(item);
         tracker.add(item);
-        tracker.add(replaceItem);
-        tracker.replace(item.getId(), replaceItem);
-
+        tracker.add(item1);
+        boolean replace = tracker.replace(item.getId(), replaceItem);
+        assertThat(replace).isTrue();
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replaceItem.getName());
-        assertThatList(tracker.findAll()).containsSequence(list);
+        assertThat(tracker.findAll())
+                .hasSize(2)
+                .filteredOn(el -> el.getName().equals((replaceItem.getName())))
+                .hasSize(1);
+
     }
 }

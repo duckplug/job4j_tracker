@@ -22,7 +22,7 @@ public class StartUITest {
         );
         new StartUI(out).init(in, memTracker, actions);
         Item item = memTracker.findByName(name).get(0);
-        assertThat(item.getName() , is("Item name"));
+        assertThat(item.getName(), is("Item name"));
     }
 
     @Test
@@ -70,8 +70,8 @@ public class StartUITest {
         );
         new StartUI(out).init(in, memTracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Exit" + System.lineSeparator()
         ));
     }
 
@@ -84,21 +84,20 @@ public class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
 
-
         List<UserAction> actions = List.of(
                 new FindAllAction(out),
                 new Exit()
         );
         new StartUI(out).init(in, memTracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find all Item" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== Show all items ====" + System.lineSeparator() +
-                        item + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find all Item" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find all Item" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Show all items ====" + System.lineSeparator()
+                        + item + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find all Item" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -111,21 +110,23 @@ public class StartUITest {
                 new String[]{"0", "Find by name", "1"}
         );
 
-
         List<UserAction> actions = List.of(
                 new FindItemByNameAction(out),
                 new Exit()
         );
         new StartUI(out).init(in, memTracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find Item by name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== Find items by name ====" + System.lineSeparator() +
-                        item + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find Item by name" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find Item by name"
+                        + System.lineSeparator()
+                        + "1. Exit"
+                        + System.lineSeparator()
+                        + "=== Find items by name ===="
+                        + System.lineSeparator()
+                        + item + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find Item by name" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -138,21 +139,20 @@ public class StartUITest {
                 new String[]{"0", String.valueOf(item.getId()), "1"}
         );
 
-
         List<UserAction> actions = List.of(
                 new FindItemByIdAction(out),
                 new Exit()
         );
         new StartUI(out).init(in, memTracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Find Item by ID" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator() +
-                        "=== Find item by id ====" + System.lineSeparator() +
-                        item + System.lineSeparator() +
-                        "Menu." + System.lineSeparator() +
-                        "0. Find Item by ID" + System.lineSeparator() +
-                        "1. Exit" + System.lineSeparator()
+                "Menu." + System.lineSeparator()
+                        + "0. Find Item by ID" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
+                        + "=== Find item by id ====" + System.lineSeparator()
+                        + item + System.lineSeparator()
+                        + "Menu." + System.lineSeparator()
+                        + "0. Find Item by ID" + System.lineSeparator()
+                        + "1. Exit" + System.lineSeparator()
         ));
     }
 
@@ -160,7 +160,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"2","0"}
+                new String[] {"2", "0"}
         );
         MemTracker memTracker = new MemTracker();
     List<UserAction> actions = List.of(
