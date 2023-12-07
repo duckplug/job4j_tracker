@@ -126,7 +126,7 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = new Item("Item");
         Item item1 = new Item("Item1");
-        Item replaceItem = new Item( "ReplaceItem");
+        Item replaceItem = new Item("ReplaceItem");
         tracker.add(item);
         tracker.add(item1);
         boolean replace = tracker.replace(item.getId(), replaceItem);
